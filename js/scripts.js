@@ -1,5 +1,5 @@
 
-function consultarLocalizacao() {
+async function consultarLocalizacao() {
     const resultado = document.getElementById("resultado");
 
     if (!navigator.geolocation) {
@@ -15,32 +15,48 @@ function consultarLocalizacao() {
             const longitude = posicao.coords.longitude;
 
             try {
-                const resposta = await fetch(
+                // Consulta a localização
+                const respostaLocal = await fetch(
                     `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=pt`
                 );
 
-                if (!resposta.ok) {
-                    throw new Error("Erro na consulta da localização.");
+                if (!respostaLocal.ok) {
+                    throw new Error("Erro ao consultar localização.");
                 }
 
-                const dados = await resposta.json();
+                const dadosLocal = await respostaLocal.json();
 
-                const cidade = dados.city || dados.locality;
-                const estado = dados.principalSubdivision;
+                const cidade = dadosLocal.city || dadosLocal.locality;
+                const estado = dadosLocal.principalSubdivision;
 
                 if (!cidade) {
                     resultado.innerHTML = "<p>Não foi possível identificar sua cidade.</p>";
                     return;
                 }
 
+                // Consulta a temperatura atual
+                const respostaClima = await fetch(
+                    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&temperature_unit=celsius&timezone=auto`
+                );
+
+                if (!respostaClima.ok) {
+                    throw new Error("Erro ao consultar previsão do tempo.");
+                }
+
+                const dadosClima = await respostaClima.json();
+
+                const temperatura = dadosClima.current.temperature_2m;
+
                 resultado.innerHTML = `
                     <p><strong>${cidade} - ${estado}</strong></p>
+                    <p>Temperatura atual: ${temperatura} °C</p>
                     <p>Latitude: ${latitude.toFixed(5)}</p>
                     <p>Longitude: ${longitude.toFixed(5)}</p>
                 `;
 
             } catch (erro) {
-                resultado.innerHTML = "<p>Erro ao consultar sua localização.</p>";
+                resultado.innerHTML = "<p>Não foi possível consultar as informações.</p>";
+                console.error(erro);
             }
         },
 
