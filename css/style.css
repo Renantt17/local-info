@@ -5,9 +5,49 @@
     box-sizing: border-box;
 }
 
+:root {
+    --destaque: #398CC5;
+    --destaque-hover: #286F9F;
+    --destaque-claro: #DCEEF7;
+    --cabecalho: #315B75;
+    --texto-cabecalho: #FFFFFF;
+}
+
+body.tema-madrugada {
+    --destaque: #75BCE5;
+    --destaque-hover: #559CC5;
+    --destaque-claro: #263D59;
+    --cabecalho: #172B49;
+    --texto-cabecalho: #FFFFFF;
+}
+
+body.tema-amanhecer {
+    --destaque: #DE876C;
+    --destaque-hover: #C56C54;
+    --destaque-claro: #FBE0D3;
+    --cabecalho: #C66E62;
+    --texto-cabecalho: #FFFFFF;
+}
+
+body.tema-dia {
+    --destaque: #398CC5;
+    --destaque-hover: #286F9F;
+    --destaque-claro: #DCEEF7;
+    --cabecalho: #315B75;
+    --texto-cabecalho: #FFFFFF;
+}
+
+body.tema-por-do-sol {
+    --destaque: #D77B4E;
+    --destaque-hover: #B95E38;
+    --destaque-claro: #F8DDC8;
+    --cabecalho: #D96B54;
+    --texto-cabecalho: #FFFFFF;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #F8F8FC;
+    background-color: #F8F7F2;
     color: #333333;
     line-height: 1.5;
 }
@@ -19,9 +59,10 @@ body {
 }
 
 header {
-    background-color: #55468D;
-    color: white;
+    background-color: var(--cabecalho);
+    color: var(--texto-cabecalho);
     padding: 30px 0;
+    transition: background-color 0.5s;
 }
 
 header h1 {
@@ -30,7 +71,8 @@ header h1 {
 }
 
 header p {
-    color: #EAE6F7;
+    color: var(--texto-cabecalho);
+    opacity: 0.9;
 }
 
 main {
@@ -39,14 +81,14 @@ main {
 
 section {
     background-color: white;
-    border: 1px solid #E0E0E8;
+    border: 1px solid #E5E2DC;
     border-radius: 10px;
     padding: 25px;
     margin-bottom: 25px;
 }
 
 section h2 {
-    color: #55468D;
+    color: #315B75;
     margin-bottom: 10px;
 }
 
@@ -56,22 +98,22 @@ section h2 {
 }
 
 button {
-    background-color: #397F83;
+    background-color: var(--destaque);
     color: white;
     border: none;
     padding: 12px 20px;
     border-radius: 6px;
     font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.5s;
 }
 
 button:hover {
-    background-color: #2D6569;
+    background-color: var(--destaque-hover);
 }
 
 button:focus-visible {
-    outline: 3px solid #A9D4D2;
+    outline: 3px solid var(--destaque);
     outline-offset: 3px;
 }
 
@@ -83,14 +125,12 @@ button:focus-visible {
     color: #666666;
 }
 
-/* Informações meteorológicas */
-
 .localizacao {
     margin-bottom: 20px;
 }
 
 .localizacao h3 {
-    color: #55468D;
+    color: #315B75;
     font-size: 22px;
 }
 
@@ -100,15 +140,19 @@ button:focus-visible {
 }
 
 .temperatura-principal {
-    background-color: #F0EDF9;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--destaque-claro);
     padding: 25px;
     border-radius: 8px;
     margin-bottom: 20px;
+    transition: background-color 0.5s;
 }
 
 .temperatura-principal h2 {
     font-size: 42px;
-    color: #55468D;
+    color: var(--destaque);
 }
 
 .temperatura-principal p {
@@ -123,8 +167,8 @@ button:focus-visible {
 }
 
 .info-clima {
-    background-color: #F8F8FC;
-    border: 1px solid #E8E6EF;
+    background-color: #F8F7F2;
+    border: 1px solid #E5E2DC;
     border-radius: 8px;
     padding: 15px;
 }
@@ -137,12 +181,10 @@ button:focus-visible {
 }
 
 .info-clima p {
-    color: #397F83;
+    color: var(--destaque);
     font-size: 18px;
     font-weight: bold;
 }
-
-/* Nascer e pôr do sol */
 
 .sol {
     margin-bottom: 25px;
@@ -150,7 +192,7 @@ button:focus-visible {
 
 .sol h3,
 .previsao h3 {
-    color: #55468D;
+    color: #315B75;
     margin-bottom: 15px;
 }
 
@@ -161,8 +203,8 @@ button:focus-visible {
 }
 
 .horario {
-    background-color: #F8F8FC;
-    border: 1px solid #E8E6EF;
+    background-color: #F8F7F2;
+    border: 1px solid #E5E2DC;
     border-radius: 8px;
     padding: 15px;
 }
@@ -174,13 +216,41 @@ button:focus-visible {
 }
 
 .horario p {
-    color: #397F83;
+    color: var(--destaque);
     font-size: 21px;
     font-weight: bold;
     margin-top: 5px;
 }
 
-/* Previsão dos próximos dias */
+.icone-atual {
+    width: 65px;
+    height: 65px;
+    color: var(--destaque);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin-bottom: 10px;
+}
+
+.icone-dia {
+    width: 38px;
+    height: 38px;
+    color: var(--destaque);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin: 5px auto;
+}
+
+.condicao-dia {
+    color: #666666;
+    font-size: 12px;
+    min-height: 36px;
+}
 
 .previsao-dias {
     display: grid;
@@ -189,14 +259,15 @@ button:focus-visible {
 }
 
 .dia-previsao {
-    background-color: #F0EDF9;
+    background-color: var(--destaque-claro);
     border-radius: 8px;
     padding: 15px 8px;
     text-align: center;
+    transition: background-color 0.5s;
 }
 
 .dia-previsao h4 {
-    color: #55468D;
+    color: #315B75;
     font-size: 13px;
     margin-bottom: 12px;
     text-transform: capitalize;
@@ -208,7 +279,7 @@ button:focus-visible {
 }
 
 .dia-previsao .maxima {
-    color: #397F83;
+    color: var(--destaque);
     font-weight: bold;
 }
 
@@ -216,21 +287,17 @@ button:focus-visible {
     color: #777777;
 }
 
-/* Coordenadas */
-
 .coordenadas {
-    border-top: 1px solid #E8E6EF;
+    border-top: 1px solid #E5E2DC;
     padding-top: 15px;
     margin-top: 25px;
     color: #888888;
     font-size: 12px;
 }
 
-/* Publicidade e informações */
-
 .publicidade {
-    background-color: #EAF0FA;
-    border: 1px dashed #397F83;
+    background-color: #E8F1F5;
+    border: 1px dashed #78A9C2;
     border-radius: 8px;
     padding: 30px;
     margin-bottom: 25px;
@@ -247,10 +314,11 @@ button:focus-visible {
 }
 
 footer {
-    background-color: #55468D;
+    background-color: var(--cabecalho);
     color: white;
     text-align: center;
     padding: 25px 15px;
+    transition: background-color 0.5s;
 }
 
 footer a {
@@ -260,8 +328,6 @@ footer a {
 footer p {
     margin: 5px 0;
 }
-
-/* Responsividade */
 
 @media (max-width: 700px) {
     .detalhes-clima {
@@ -297,4 +363,16 @@ footer p {
     .previsao-dias {
         grid-template-columns: 1fr 1fr;
     }
+}
+
+.indicador-periodo {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 13px;
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 20px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
 }
