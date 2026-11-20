@@ -15,7 +15,7 @@ async function consultarLocalizacao() {
             const longitude = posicao.coords.longitude;
 
             try {
-                // Consulta a localização
+                //acha a loc
                 const respostaLocal = await fetch(
                     `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=pt`
                 );
@@ -33,10 +33,9 @@ async function consultarLocalizacao() {
                     resultado.innerHTML = "<p>Não foi possível identificar sua cidade.</p>";
                     return;
                 }
-
-                // Consulta a temperatura atual
+                //acha clima local
                 const respostaClima = await fetch(
-                    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&temperature_unit=celsius&timezone=auto`
+                    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m&temperature_unit=celsius&wind_speed_unit=kmh&timezone=auto`
                 );
 
                 if (!respostaClima.ok) {
@@ -46,10 +45,17 @@ async function consultarLocalizacao() {
                 const dadosClima = await respostaClima.json();
 
                 const temperatura = dadosClima.current.temperature_2m;
+                const sensacao = dadosClima.current.apparent_temperature;
+                const umidade = dadosClima.current.relative_humidity_2m;
+                const vento = dadosClima.current.wind_speed_10m;
 
+                //infos 
                 resultado.innerHTML = `
                     <p><strong>${cidade} - ${estado}</strong></p>
                     <p>Temperatura atual: ${temperatura} °C</p>
+                    <p>Sensação térmica: ${sensacao} °C</p>
+                    <p>Umidade do ar: ${umidade}%</p>
+                    <p>Velocidade do vento: ${vento} km/h</p>
                     <p>Latitude: ${latitude.toFixed(5)}</p>
                     <p>Longitude: ${longitude.toFixed(5)}</p>
                 `;
