@@ -199,27 +199,60 @@ button:focus-visible {
 .horarios-sol {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 15px;
 }
 
 .horario {
-    background-color: #F8F7F2;
-    border: 1px solid #E5E2DC;
-    border-radius: 8px;
-    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 22px;
+    border-radius: 12px;
+    min-height: 115px;
+    border: 1px solid transparent;
+}
+
+.horario.nascer {
+    background: linear-gradient(135deg, #FFF0D9, #FBE0D3);
+    border-color: #F1C9A7;
+}
+
+.horario.por-do-sol {
+    background: linear-gradient(135deg, #FBE0D3, #E9DDF5);
+    border-color: #E5C4C3;
+}
+
+.icone-sol {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.nascer .icone-sol {
+    color: #D98B35;
+}
+
+.por-do-sol .icone-sol {
+    color: #C66E62;
 }
 
 .horario h4 {
-    color: #777777;
-    font-size: 13px;
+    color: #665B55;
+    font-size: 14px;
     font-weight: normal;
 }
 
 .horario p {
-    color: var(--destaque);
-    font-size: 21px;
+    color: #493D38;
+    font-size: 30px;
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 3px;
+    line-height: 1.2;
 }
 
 .icone-atual {
@@ -329,6 +362,18 @@ footer p {
     margin: 5px 0;
 }
 
+.indicador-periodo {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 13px;
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 20px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
 @media (max-width: 700px) {
     .detalhes-clima {
         grid-template-columns: repeat(2, 1fr);
@@ -363,16 +408,12 @@ footer p {
     .previsao-dias {
         grid-template-columns: 1fr 1fr;
     }
-}
 
-.indicador-periodo {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 6px 13px;
-    background-color: rgba(255, 255, 255, 0.18);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 20px;
-    color: white;
-    font-size: 13px;
-    font-weight: bold;
+    .horarios-sol {
+        grid-template-columns: 1fr;
+    }
+
+    .horario {
+        padding: 18px;
+    }
 }

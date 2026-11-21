@@ -249,14 +249,28 @@ async function consultarLocalizacao() {
                             <h3>Nascer e pôr do sol</h3>
 
                             <div class="horarios-sol">
-                                <div class="horario">
-                                    <h4>Nascer do sol</h4>
-                                    <p>${nascerSol}</p>
+                                <div class="horario nascer">
+                                    <svg class="icone-sol" viewBox="0 0 24 24" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="4"/>
+                                        <path d="M12 2v2 M12 20v2 M4.93 4.93l1.42 1.42 M17.65 17.65l1.42 1.42 M2 12h2 M20 12h2 M4.93 19.07l1.42-1.42 M17.65 6.35l1.42-1.42"/>
+                                        <path d="M3 19h18 M5 16a7 7 0 0 1 14 0"/>
+                                    </svg>
+                                    <div>
+                                        <h4>Nascer do sol</h4>
+                                        <p>${nascerSol}</p>
+                                    </div>
                                 </div>
 
-                                <div class="horario">
-                                    <h4>Pôr do sol</h4>
-                                    <p>${porSol}</p>
+                                <div class="horario por-do-sol">
+                                    <svg class="icone-sol" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M3 19h18 M5 16a7 7 0 0 1 14 0"/>
+                                        <path d="M12 2v7 M4.93 7.93l1.42 1.42 M19.07 7.93l-1.42 1.42 M2 13h2 M20 13h2"/>
+                                        <path d="M12 9l-2-2 M12 9l2-2"/>
+                                    </svg>
+                                    <div>
+                                        <h4>Pôr do sol</h4>
+                                        <p>${porSol}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
