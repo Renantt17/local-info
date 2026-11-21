@@ -417,3 +417,18 @@ footer p {
         padding: 18px;
     }
 }
+
+.sobre h3 {
+    color: #315B75;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.sobre ul {
+    padding-left: 22px;
+    color: #666666;
+}
+
+.sobre li {
+    margin-bottom: 8px;
+}

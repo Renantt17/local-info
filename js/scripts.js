@@ -251,9 +251,9 @@ async function consultarLocalizacao() {
                             <div class="horarios-sol">
                                 <div class="horario nascer">
                                     <svg class="icone-sol" viewBox="0 0 24 24" aria-hidden="true">
-                                        <circle cx="12" cy="12" r="4"/>
-                                        <path d="M12 2v2 M12 20v2 M4.93 4.93l1.42 1.42 M17.65 17.65l1.42 1.42 M2 12h2 M20 12h2 M4.93 19.07l1.42-1.42 M17.65 6.35l1.42-1.42"/>
-                                        <path d="M3 19h18 M5 16a7 7 0 0 1 14 0"/>
+                                        <path d="M3 18h18"/>
+                                        <path d="M5 16a7 7 0 0 1 14 0"/>
+                                        <path d="M12 6v2 M6 7l2 2 M18 7l-2 2 M3 12h3 M18 12h3"/>
                                     </svg>
                                     <div>
                                         <h4>Nascer do sol</h4>
@@ -263,9 +263,9 @@ async function consultarLocalizacao() {
 
                                 <div class="horario por-do-sol">
                                     <svg class="icone-sol" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path d="M3 19h18 M5 16a7 7 0 0 1 14 0"/>
-                                        <path d="M12 2v7 M4.93 7.93l1.42 1.42 M19.07 7.93l-1.42 1.42 M2 13h2 M20 13h2"/>
-                                        <path d="M12 9l-2-2 M12 9l2-2"/>
+                                        <path d="M3 18h18"/>
+                                        <path d="M5 18a7 7 0 0 1 14 0"/>
+                                        <path d="M12 7v3 M5 11l2 2 M19 11l-2 2 M2 15h3 M19 15h3"/>
                                     </svg>
                                     <div>
                                         <h4>Pôr do sol</h4>
